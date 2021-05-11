@@ -2,7 +2,8 @@ function Pillars(object){
     this.pillarObj = object;
     this.dom = {
         pillar: document.getElementsByClassName('pillar'),
-        stylesheet : document.documentElement
+        stylesheet : document.documentElement,
+        sheet:  document.styleSheets[0]
     }
 
     if (this.dom.pillar[0] === null) { throw new Error( console.error( 'No elements with className pillar.' ) ) }
@@ -24,9 +25,24 @@ Pillars.prototype.setup = function () {
         count += 110;
     }
 
+    this.move();
+
 }
 
-Pillars.prototype.move = function () {
+Pillars.prototype.move = function (name, frames) {
+
+    let index = this.dom.pillar.length;
+    // this.dom.sheet.insertRule(`@keyframes move-example { 
+    //     0% { left: ${pillar.pillarObj.left}px } 
+    //     100% { left: ${left}px; } `
+    //     , pos);
+
+    while(index--) {
+
+        this.dom.pillar[index].style.setProperty('--pillar-moveleft', 500 +'px')
+
+    }
+
 
 }
 
@@ -41,4 +57,8 @@ const pillar = new Pillars({
 });
 
 pillar.setup();
-//pillar.move();
+pillar.move();
+// pillar.move('move-example',
+//             '0%{ left: `${pillar.pillarObj.left}px`; }' + 
+//             '100%{ left: 300 + px; }'
+//             );

@@ -4,6 +4,7 @@
     --pillar-height: 0px;  
     --pillar-top: 0px;
     --pillar-left: 0px;
+    --pillar-moveleft: 0px
 }
 
 
@@ -14,4 +15,16 @@
     border: 3px solid blue;
     width: var(--pillar-width);
     height: var(--pillar-height);
+    animation-name: move-example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
 }
+
+@keyframes move-example {
+    0% { left: 0px } 
+    100% { left: var(--pillar-moveleft) }
+}
+
+

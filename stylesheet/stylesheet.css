@@ -4,6 +4,8 @@
   --pillar-height: 0px;
   --pillar-top: 0px;
   --pillar-left: 0px;
+  --pillar-moveleft: 0px
+;
 }
 
 .pillar {
@@ -13,5 +15,33 @@
   border: 3px solid blue;
   width: var(--pillar-width);
   height: var(--pillar-height);
+  -webkit-animation-name: move-example;
+          animation-name: move-example;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes move-example {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: var(--pillar-moveleft);
+  }
+}
+
+@keyframes move-example {
+  0% {
+    left: 0px;
+  }
+  100% {
+    left: var(--pillar-moveleft);
+  }
 }
 /*# sourceMappingURL=stylesheet.css.map */
