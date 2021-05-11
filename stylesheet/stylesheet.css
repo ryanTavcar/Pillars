@@ -1,24 +1,24 @@
 :root {
-  --pillar-color: black;
+  --pillar-color: none;
   --pillar-width: 0px;
   --pillar-height: 0px;
   --pillar-top: 0px;
   --pillar-left: 0px;
-  --pillar-moveleft: 0px
-;
+  --pillar-movement: 0px;
+  --pillar-transition: move;
 }
 
 .pillar {
   position: absolute;
   top: var(--pillar-top);
   left: var(--pillar-left);
-  border: 3px solid blue;
+  border: 2px solid var(--pillar-color);
   width: var(--pillar-width);
   height: var(--pillar-height);
-  -webkit-animation-name: move-example;
-          animation-name: move-example;
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
+  -webkit-animation-name: var(--pillar-transition);
+          animation-name: var(--pillar-transition);
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
@@ -27,21 +27,39 @@
           animation-timing-function: linear;
 }
 
-@-webkit-keyframes move-example {
+@-webkit-keyframes move {
   0% {
     left: 0px;
   }
   100% {
-    left: var(--pillar-moveleft);
+    left: var(--pillar-movement);
   }
 }
 
-@keyframes move-example {
+@keyframes move {
   0% {
     left: 0px;
   }
   100% {
-    left: var(--pillar-moveleft);
+    left: var(--pillar-movement);
+  }
+}
+
+@-webkit-keyframes stretch {
+  0% {
+    width: var(--pillar-width);
+  }
+  100% {
+    width: var(--pillar-movement);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    width: var(--pillar-width);
+  }
+  100% {
+    width: var(--pillar-movement);
   }
 }
 /*# sourceMappingURL=stylesheet.css.map */
