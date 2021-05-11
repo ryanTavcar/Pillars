@@ -1,4 +1,17 @@
-body {
-  background-color: red;
+:root {
+  --pillar-color: black;
+  --pillar-width: 0px;
+  --pillar-height: 0px;
+  --pillar-top: 0px;
+  --pillar-left: 0px;
+}
+
+.pillar {
+  position: absolute;
+  top: var(--pillar-top);
+  left: var(--pillar-left);
+  border: 3px solid blue;
+  width: var(--pillar-width);
+  height: var(--pillar-height);
 }
 /*# sourceMappingURL=stylesheet.css.map */
