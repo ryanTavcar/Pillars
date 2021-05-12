@@ -43,13 +43,12 @@ Pillars.prototype.insertStyleRule = function (ruleText) {
 
 }
 
-Pillars.prototype.transition = function (callback, pixels) {
+Pillars.prototype.transition = function (pixels) {
 
-
-    switch (this.pillarObj.animation || callback) {
+    switch (this.pillarObj.animation) {
         
         case 'move':
-            this.move(pixels, 1);
+            this.move(pixels);
             break;
         case 'stretch':
             this.stretch(pixels);
@@ -60,10 +59,14 @@ Pillars.prototype.transition = function (callback, pixels) {
     }
 }
 
-Pillars.prototype.move = function (pixels, passed) {
+Pillars.prototype.move = function (pixels) {
 
     this.insertStyleRule(".pillar { animation: move 3s infinite alternate;}");
     this.insertStyleRule(`@keyframes move { 0% { left: 0px; } 100% { left: ${pixels}px } }`);
+
+}
+
+Pillars.prototype.delayPillar = function (passed) {
 
     let delay = passed
     for(let index = 0; index < this.dom.pillar.length; index++) {
@@ -73,14 +76,13 @@ Pillars.prototype.move = function (pixels, passed) {
     }
 }
 
-Pillars.prototype.delayPillar = function () {
+Pillars.prototype.everySecond = function (color) {
 
-    let index = this.dom.pillar.length;
-    for(let index = 0; index < this.dom.pillar.length; index++) {
+    for (let index = 0; index < this.dom.pillar.length; index++){
 
-
-        this.dom.pillar[index].style.animationDelay = `${index}s`;
+        this.dom.pillar[index++].style.backgroundColor = `${color}`;
     }
+
 }
 
 // Pillars.prototype.stretch = function (pixels) {
@@ -103,11 +105,14 @@ const pillar = new Pillars({
     height      : 100,
     top         : 300,
     left        : 0,
-    color       : 'black'
+    color       : 'green',
+    animation   : 'move'
 });
 
 pillar.setup();
 
-pillar.transition('move', 800);
+pillar.transition(300, 1);
+pillar.everySecond('blue');
+pillar.delayPillar(2);
 //pillar.insertStyleRule(".pillar { animation: move 3s infinite alternate;}");
 
